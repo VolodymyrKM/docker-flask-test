@@ -1,0 +1,44 @@
+version: "3"
+services:
+  web_flask:
+    image: flask_client:v1
+    container_name: flask_client
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - /home/volodymyr/myproject/simpleweb3:/app/user
+    networks:
+      - cust_network
+
+  db:
+    image: mysql
+    container_name: cust_mysql
+    env_file: .env
+    volumes:
+      - db_data
+    networks:
+      - cust_network
+
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /home/volodymyr/myproject/simpleweb3:/app/user
+
+    entrypoint: ["/bin/bash","-c"]
+    command:
+     - |
+        flask run
+        pytest
+
+
+
+
+volumes:
+  db_data:
+
+networks:
+  cust_network:

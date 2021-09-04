@@ -27,15 +27,11 @@ services:
       dockerfile: Dockerfile.dev
     volumes:
       - /home/volodymyr/myproject/simpleweb3:/app/user
-
     entrypoint: ["/bin/bash","-c"]
     command:
      - |
         flask run
         pytest
-
-
-
 
 volumes:
   db_data:

@@ -15,6 +15,3 @@ def test_index(test_cli):
 def test_index_response(test_cli):
     response = test_cli.get("/")
     assert response.data == b"<h1> Hello world 3 </h1>"
-
-
-

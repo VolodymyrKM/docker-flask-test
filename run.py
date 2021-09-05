@@ -16,9 +16,6 @@ class Role(db.Model):
     name = db.Column(db.String(64), unique=True)
     users = db.relationship("User", backref="role", lazy="dynamic")
 
-    def __repr__(self):
-        return f"<{self.name}>"
-
 
 class User(db.Model):
     __tablename__ = "user"

@@ -3,18 +3,18 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = 'hardsecretkey'
+app.config["SECRET_KEY"] = "hardsecretkey"
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:12345678@db:3306/test_db"
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
 
 class Role(db.Model):
-    __tablename__ = 'roles'
+    __tablename__ = "roles"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), unique=True)
-    users = db.relationship("User", backref='role', lazy="dynamic")
+    users = db.relationship("User", backref="role", lazy="dynamic")
 
     def __repr__(self):
         return f"<{self.name}>"
@@ -30,13 +30,9 @@ class User(db.Model):
         return f"<{self.username}>"
 
 
-
 @app.route("/")
 def index():
     return "<h1> Hello world 3 </h1>"
-
-
-
 
 
 if __name__ == "__main__":

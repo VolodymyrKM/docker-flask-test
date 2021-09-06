@@ -11,6 +11,6 @@ RUN pip install -r requirements.txt
 
 COPY . /app/user/
 
-ENTRYPOINT ["flask"]
+ENTRYPOINT ["python"]
 
-CMD ["run"]
+CMD ["run.py"]

@@ -2,16 +2,16 @@ sudo: required
 services:
   - docker
 
-before_install:
-  - docker build --tag volodymyrkolomiiets/docker-flask-test -f Dockerfile.dev .
+#before_install:
+#  - docker build --tag volodymyrkolomiiets/docker-flask-test -f Dockerfile.dev .
 
 #scrtipt:
 #  - docker run volodymyrkolomiiets/docker-flask-test pytest
 
 
-#language: python
-#install:
-#  - pip install -r requirements.txt
-#
+language: python
+install:
+  - pip install -r requirements.txt
+
 script:
   - python -m pytest -v
